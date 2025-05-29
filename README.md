@@ -101,6 +101,62 @@ Register a new user.
 }
 ```
 
+**Example (JavaScript):**
+
+```javascript
+// Register a new user
+async function registerUser(userData) {
+  try {
+    const response = await fetch("http://localhost:8000/api/v1/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Registration failed:", error);
+    throw error;
+  }
+}
+
+// Usage
+const newUser = {
+  email: "user@example.com",
+  full_name: "John Doe",
+  password: "secure_password",
+  phone_number: "+1234567890",
+  location: "New York",
+  preferred_language: "en",
+};
+
+registerUser(newUser)
+  .then((user) => console.log("User registered:", user))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "full_name": "John Doe",
+    "password": "secure_password",
+    "phone_number": "+1234567890",
+    "location": "New York",
+    "preferred_language": "en"
+  }'
+```
+
 #### POST `/api/v1/auth/login`
 
 Authenticate a user and get access token.
@@ -129,6 +185,54 @@ Authenticate a user and get access token.
 }
 ```
 
+**Example (JavaScript):**
+
+```javascript
+// Login user
+async function loginUser(email, password) {
+  try {
+    const response = await fetch("http://localhost:8000/api/v1/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: email, // Note: API uses 'username' field for email
+        password: password,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    // Store token in localStorage for later use
+    localStorage.setItem("token", data.access_token);
+    return data;
+  } catch (error) {
+    console.error("Login failed:", error);
+    throw error;
+  }
+}
+
+// Usage
+loginUser("user@example.com", "secure_password")
+  .then((data) => console.log("Login successful:", data))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "user@example.com",
+    "password": "secure_password"
+  }'
+```
+
 #### POST `/api/v1/auth/refresh`
 
 Refresh an access token.
@@ -143,6 +247,51 @@ Refresh an access token.
 
 **Response:** Same as login response.
 
+**Example (JavaScript):**
+
+```javascript
+// Refresh token
+async function refreshToken(token) {
+  try {
+    const response = await fetch("http://localhost:8000/api/v1/auth/refresh", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    // Update token in localStorage
+    localStorage.setItem("token", data.access_token);
+    return data;
+  } catch (error) {
+    console.error("Token refresh failed:", error);
+    throw error;
+  }
+}
+
+// Usage
+const currentToken = localStorage.getItem("token");
+refreshToken(currentToken)
+  .then((data) => console.log("Token refreshed:", data))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/refresh \
+  -H "Content-Type: application/json" \
+  -d '{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }'
+```
+
 #### POST `/api/v1/auth/logout`
 
 Logout a user (client-side token removal).
@@ -153,6 +302,51 @@ Logout a user (client-side token removal).
 {
   "success": true
 }
+```
+
+**Example (JavaScript):**
+
+```javascript
+// Logout user
+async function logoutUser() {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:8000/api/v1/auth/logout", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Remove token from localStorage regardless of response
+    localStorage.removeItem("token");
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Logout failed:", error);
+    // Still remove token even if API call fails
+    localStorage.removeItem("token");
+    throw error;
+  }
+}
+
+// Usage
+logoutUser()
+  .then((data) => console.log("Logout successful:", data))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/logout \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 ```
 
 ### Users
@@ -179,6 +373,45 @@ Get current user information.
 }
 ```
 
+**Example (JavaScript):**
+
+```javascript
+// Get current user profile
+async function getCurrentUser() {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:8000/api/v1/users/me", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to get user profile:", error);
+    throw error;
+  }
+}
+
+// Usage
+getCurrentUser()
+  .then((user) => console.log("User profile:", user))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X GET http://localhost:8000/api/v1/users/me \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+```
+
 #### PUT `/api/v1/users/me`
 
 Update current user information.
@@ -199,6 +432,61 @@ Update current user information.
 ```
 
 **Response:** Updated user object.
+
+**Example (JavaScript):**
+
+```javascript
+// Update user profile
+async function updateUserProfile(userData) {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:8000/api/v1/users/me", {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to update user profile:", error);
+    throw error;
+  }
+}
+
+// Usage
+const updatedUserData = {
+  full_name: "John Smith",
+  phone_number: "+1234567890",
+  location: "Los Angeles",
+  preferred_language: "en",
+};
+
+updateUserProfile(updatedUserData)
+  .then((user) => console.log("Profile updated:", user))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X PUT http://localhost:8000/api/v1/users/me \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "full_name": "John Smith",
+    "phone_number": "+1234567890",
+    "location": "Los Angeles",
+    "preferred_language": "en"
+  }'
+```
 
 #### PATCH `/api/v1/users/language`
 
@@ -223,6 +511,54 @@ Update user's preferred language.
   "success": true,
   "preferred_language": "fr"
 }
+```
+
+**Example (JavaScript):**
+
+```javascript
+// Update user language preference
+async function updateLanguage(language) {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      "http://localhost:8000/api/v1/users/language",
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ preferred_language: language }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to update language:", error);
+    throw error;
+  }
+}
+
+// Usage
+updateLanguage("fr")
+  .then((result) => console.log("Language updated:", result))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X PATCH http://localhost:8000/api/v1/users/language \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "preferred_language": "fr"
+  }'
 ```
 
 ### Farms
@@ -263,6 +599,51 @@ Get all farms for the current user.
 ]
 ```
 
+**Example (JavaScript):**
+
+```javascript
+// Get all farms for current user
+async function getUserFarms() {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:8000/api/v1/farms", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to get farms:", error);
+    throw error;
+  }
+}
+
+// Usage
+getUserFarms()
+  .then((farms) => {
+    console.log("User farms:", farms);
+    // Display farms in UI
+    farms.forEach((farm) => {
+      console.log(`Farm: ${farm.name}, Size: ${farm.size} hectares`);
+    });
+  })
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X GET http://localhost:8000/api/v1/farms \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+```
+
 #### POST `/api/v1/farms`
 
 Create a new farm.
@@ -295,6 +676,83 @@ Create a new farm.
 
 **Response:** Created farm object.
 
+**Example (JavaScript):**
+
+```javascript
+// Create a new farm
+async function createFarm(farmData) {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:8000/api/v1/farms", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(farmData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to create farm:", error);
+    throw error;
+  }
+}
+
+// Usage
+const newFarm = {
+  name: "Organic Valley Farm",
+  location: "Countryside",
+  size: 85.7,
+  topography: "hilly",
+  coordinates: {
+    latitude: 40.7128,
+    longitude: -74.006,
+  },
+  soil_params: {
+    ph: 6.2,
+    nitrogen: 0.4,
+    phosphorus: 0.3,
+    potassium: 0.5,
+    organic_matter: 4.1,
+  },
+};
+
+createFarm(newFarm)
+  .then((farm) => console.log("Farm created:", farm))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X POST http://localhost:8000/api/v1/farms \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Organic Valley Farm",
+    "location": "Countryside",
+    "size": 85.7,
+    "topography": "hilly",
+    "coordinates": {
+      "latitude": 40.7128,
+      "longitude": -74.006
+    },
+    "soil_params": {
+      "ph": 6.2,
+      "nitrogen": 0.4,
+      "phosphorus": 0.3,
+      "potassium": 0.5,
+      "organic_matter": 4.1
+    }
+  }'
+```
+
 #### GET `/api/v1/farms/{farm_id}`
 
 Get a specific farm by ID.
@@ -304,6 +762,48 @@ Get a specific farm by ID.
 - Authorization: Bearer {token}
 
 **Response:** Farm object.
+
+**Example (JavaScript):**
+
+```javascript
+// Get farm by ID
+async function getFarmById(farmId) {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      `http://localhost:8000/api/v1/farms/${farmId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to get farm:", error);
+    throw error;
+  }
+}
+
+// Usage
+getFarmById("farm_id")
+  .then((farm) => console.log("Farm details:", farm))
+  .catch((error) => console.error(error));
+```
+
+**Example (cURL):**
+
+```bash
+curl -X GET http://localhost:8000/api/v1/farms/farm_id \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+```
 
 #### PUT `/api/v1/farms/{farm_id}`
 
@@ -868,3 +1368,353 @@ pytest
 ## License
 
 MIT
+
+## Frontend Integration Utilities
+
+Below are some utility functions to help frontend developers quickly integrate with the Ecofy API:
+
+### API Client Setup
+
+```javascript
+// api.js - A simple API client for Ecofy
+
+class EcofyAPI {
+  constructor(baseURL = "http://localhost:8000/api/v1") {
+    this.baseURL = baseURL;
+    this.token = localStorage.getItem("token") || null;
+  }
+
+  // Set authentication token
+  setToken(token) {
+    this.token = token;
+    localStorage.setItem("token", token);
+  }
+
+  // Clear authentication token
+  clearToken() {
+    this.token = null;
+    localStorage.removeItem("token");
+  }
+
+  // Get authentication headers
+  getHeaders(includeContentType = true) {
+    const headers = {};
+
+    if (this.token) {
+      headers["Authorization"] = `Bearer ${this.token}`;
+    }
+
+    if (includeContentType) {
+      headers["Content-Type"] = "application/json";
+    }
+
+    return headers;
+  }
+
+  // Generic request method
+  async request(endpoint, method = "GET", data = null, customHeaders = {}) {
+    const url = `${this.baseURL}${endpoint}`;
+
+    const options = {
+      method,
+      headers: {
+        ...this.getHeaders(),
+        ...customHeaders,
+      },
+    };
+
+    if (data && method !== "GET") {
+      options.body = JSON.stringify(data);
+    }
+
+    try {
+      const response = await fetch(url, options);
+
+      // Handle token expiration
+      if (response.status === 401) {
+        this.clearToken();
+        throw new Error("Authentication failed - please login again");
+      }
+
+      // Parse JSON response if present
+      let result;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        result = await response.json();
+      } else {
+        result = await response.text();
+      }
+
+      if (!response.ok) {
+        throw new Error(result.detail || `API Error: ${response.status}`);
+      }
+
+      return result;
+    } catch (error) {
+      console.error(`API request failed: ${error.message}`);
+      throw error;
+    }
+  }
+
+  // Authentication methods
+  async register(userData) {
+    return this.request("/auth/register", "POST", userData);
+  }
+
+  async login(email, password) {
+    const result = await this.request("/auth/login", "POST", {
+      username: email, // API expects 'username' for email
+      password,
+    });
+
+    if (result.access_token) {
+      this.setToken(result.access_token);
+    }
+
+    return result;
+  }
+
+  async logout() {
+    try {
+      await this.request("/auth/logout", "POST");
+    } finally {
+      this.clearToken();
+    }
+  }
+
+  // User methods
+  async getCurrentUser() {
+    return this.request("/users/me");
+  }
+
+  async updateUserProfile(userData) {
+    return this.request("/users/me", "PUT", userData);
+  }
+
+  // Farm methods
+  async getFarms() {
+    return this.request("/farms");
+  }
+
+  async getFarm(farmId) {
+    return this.request(`/farms/${farmId}`);
+  }
+
+  async createFarm(farmData) {
+    return this.request("/farms", "POST", farmData);
+  }
+
+  async updateFarm(farmId, farmData) {
+    return this.request(`/farms/${farmId}`, "PUT", farmData);
+  }
+
+  async deleteFarm(farmId) {
+    return this.request(`/farms/${farmId}`, "DELETE");
+  }
+
+  // File upload example
+  async uploadFarmImage(farmId, fileData) {
+    const formData = new FormData();
+    formData.append("file", fileData);
+
+    return this.request(
+      `/farms/${farmId}/image`,
+      "POST",
+      formData,
+      { "Content-Type": undefined } // Let browser set correct content type with boundary
+    );
+  }
+
+  // Add more methods for other endpoints as needed
+}
+
+// Usage example
+const api = new EcofyAPI();
+
+// Login example
+async function loginExample() {
+  try {
+    const result = await api.login("user@example.com", "password");
+    console.log("Logged in as:", result.user.full_name);
+    return result;
+  } catch (error) {
+    console.error("Login failed:", error.message);
+  }
+}
+
+// Create farm example
+async function createFarmExample() {
+  try {
+    const farm = await api.createFarm({
+      name: "New Farm",
+      location: "Rural Area",
+      size: 120.5,
+      // other farm properties
+    });
+    console.log("Farm created:", farm);
+    return farm;
+  } catch (error) {
+    console.error("Failed to create farm:", error.message);
+  }
+}
+```
+
+### React Hooks Example
+
+```javascript
+// useEcofyApi.js - React hook for API integration
+
+import { useState, useEffect, useCallback } from "react";
+
+// Import the API client from above
+// import { EcofyAPI } from './api';
+
+function useEcofyApi() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const api = new EcofyAPI();
+
+  // Check if user is authenticated on hook mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+      fetchCurrentUser();
+    }
+  }, []);
+
+  // Fetch current user profile
+  const fetchCurrentUser = useCallback(async () => {
+    if (!isAuthenticated) return;
+
+    setLoading(true);
+    try {
+      const userData = await api.getCurrentUser();
+      setUser(userData);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+      setIsAuthenticated(false);
+      api.clearToken();
+    } finally {
+      setLoading(false);
+    }
+  }, [isAuthenticated]);
+
+  // Login handler
+  const login = useCallback(async (email, password) => {
+    setLoading(true);
+    try {
+      const result = await api.login(email, password);
+      setUser(result.user);
+      setIsAuthenticated(true);
+      setError(null);
+      return result;
+    } catch (err) {
+      setError(err.message);
+      return null;
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // Logout handler
+  const logout = useCallback(async () => {
+    setLoading(true);
+    try {
+      await api.logout();
+    } catch (err) {
+      console.error("Logout error:", err);
+    } finally {
+      setUser(null);
+      setIsAuthenticated(false);
+      setLoading(false);
+    }
+  }, []);
+
+  return {
+    user,
+    loading,
+    error,
+    isAuthenticated,
+    api,
+    login,
+    logout,
+    fetchCurrentUser,
+  };
+}
+
+export default useEcofyApi;
+```
+
+### Example with React Component
+
+```jsx
+// FarmsList.jsx - Example component using the API hook
+
+import React, { useEffect, useState } from "react";
+import useEcofyApi from "./useEcofyApi";
+
+function FarmsList() {
+  const { api, isAuthenticated, loading: authLoading } = useEcofyApi();
+  const [farms, setFarms] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchFarms();
+    }
+  }, [isAuthenticated]);
+
+  const fetchFarms = async () => {
+    setLoading(true);
+    try {
+      const farmsData = await api.getFarms();
+      setFarms(farmsData);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (authLoading || loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <div>Please log in to view your farms.</div>;
+  }
+
+  return (
+    <div>
+      <h2>Your Farms</h2>
+      {farms.length === 0 ? (
+        <p>You don't have any farms yet.</p>
+      ) : (
+        <ul>
+          {farms.map((farm) => (
+            <li key={farm.id}>
+              <h3>{farm.name}</h3>
+              <p>Location: {farm.location}</p>
+              <p>Size: {farm.size} hectares</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      <button onClick={fetchFarms}>Refresh</button>
+    </div>
+  );
+}
+
+export default FarmsList;
+```
