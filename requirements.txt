@@ -17,3 +17,9 @@ openmeteo-requests==1.1.0
 pandas==2.1.1
 requests-cache==1.1.0
 retry-requests==2.0.0
+
+# Gemini AI dependencies
+google-genai
+librosa>=0.10.1
+soundfile>=0.12.1
+pydub>=0.25.1 

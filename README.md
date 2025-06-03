@@ -10,7 +10,7 @@ A robust FastAPI backend for the Ecofy agricultural management platform.
 - Market price monitoring and trends
 - Marketplace for agricultural products
 - Order processing
-- Chat functionality
+- Chat functionality with Gemini AI integration
 - Weather and satellite data integration
 - Notifications system
 
@@ -21,6 +21,7 @@ A robust FastAPI backend for the Ecofy agricultural management platform.
 - **Pydantic**: Data validation and settings management
 - **JWT**: Token-based authentication
 - **SQLite**: Database (can be switched to PostgreSQL for production)
+- **Gemini AI**: Google's generative AI for intelligent chat responses
 
 ## Setup Instructions
 
@@ -52,6 +53,7 @@ A robust FastAPI backend for the Ecofy agricultural management platform.
    DATABASE_URL=sqlite:///./ecofy.db
    WEATHER_API_KEY=your_weather_api_key
    SATELLITE_API_KEY=your_satellite_api_key
+   GOOGLE_API_KEY=your_gemini_api_key
    ```
 
 5. **Run the application**
