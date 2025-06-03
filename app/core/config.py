@@ -24,6 +24,10 @@ class Settings(BaseSettings):
     WEATHER_API_KEY: Optional[str] = os.getenv("WEATHER_API_KEY")
     SATELLITE_API_KEY: Optional[str] = os.getenv("SATELLITE_API_KEY")
     
+    # ISDA Africa API credentials
+    ISDA_USERNAME: str = os.getenv("ISDA_USERNAME", "lugata619@gmail.com")
+    ISDA_PASSWORD: str = os.getenv("ISDA_PASSWORD", "gnt6192002")
+    
     class Config:
         case_sensitive = True
 
