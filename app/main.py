@@ -2,10 +2,25 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import uvicorn
+import logging
+import sys
 
 from app.api.routes import auth, users, farms, crops, market, marketplace, orders, notifications, chat, external
 from app.core.config import settings
 from app.database import engine, Base
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+
+# Get logger for this file
+logger = logging.getLogger(__name__)
+logger.info("Starting Ecofy API")
 
 # Create tables
 Base.metadata.create_all(bind=engine)

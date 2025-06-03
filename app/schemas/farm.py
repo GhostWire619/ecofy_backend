@@ -28,10 +28,16 @@ class FarmBase(BaseModel):
     size: str
     topography: Optional[str] = None
     coordinates: Coordinates
-    soil_params: SoilParameters
+    soil_params: Optional[SoilParameters] = None
+   
 
-class FarmCreate(FarmBase):
-    pass
+class FarmCreate(BaseModel):
+    name: str
+    location: str
+    size: str
+    topography: Optional[str] = None
+    coordinates: Coordinates
+ 
 
 class FarmResponse(FarmBase):
     id: str
