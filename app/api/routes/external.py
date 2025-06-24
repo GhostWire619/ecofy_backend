@@ -9,6 +9,8 @@ import requests_cache
 from retry_requests import retry
 from datetime import datetime, timedelta
 import logging
+import weatherapi
+from weatherapi.rest import ApiException
 
 from app.api.deps import get_current_user
 from app.core.config import settings
@@ -24,140 +26,46 @@ async def get_weather_forecast(
     lng: float = Query(..., description="Longitude"),
     current_user: User = Depends(get_current_user)
 ):
-    # Check if needed packages are properly installed
-    if not all(module_name in globals() for module_name in ["openmeteo_requests", "pd", "requests_cache", "retry"]):
-        # If required packages are not installed, return mock data
-        return {
+    """
+    Get weather forecast using weatherapi.com
+    """
+    # Configure API key authorization: ApiKeyAuth
+    configuration = weatherapi.Configuration()
+    configuration.api_key['key'] = 'd09bcdfd9ebe471c8ab104556252406'
+    # create an instance of the API class
+    api_instance = weatherapi.APIsApi(weatherapi.ApiClient(configuration))
+    q = f"{lat},{lng}"
+    try:
+        # Current weather API
+        api_response = api_instance.realtime_weather(q)
+        # Format the response to match the previous structure
+        current = api_response['current']
+        location = api_response['location']
+        result = {
             "current": {
-                "temp": 25.4,
-                "humidity": 78,
-                "wind_speed": 3.6,
-                "weather": [{"main": "Cloudy", "description": "Partly cloudy"}]
+                "temp": current.get("temp_c"),
+                "humidity": current.get("humidity"),
+                "wind_speed": current.get("wind_kph"),
+                "weather": [{
+                    "main": current.get("condition", {}).get("text", "Unknown"),
+                    "description": current.get("condition", {}).get("text", "Unknown")
+                }],
+                "last_updated": current.get("last_updated")
             },
-            "daily": [
-                {
-                    "dt": int(datetime.now().timestamp()),
-                    "temp": {"day": 26.7, "min": 19.8, "max": 29.1},
-                    "humidity": 75,
-                    "wind_speed": 4.2,
-                    "weather": [{"main": "Sunny", "description": "Clear sky"}]
-                }
-                # More days would be included here
-            ],
+            "location": {
+                "name": location.get("name"),
+                "region": location.get("region"),
+                "country": location.get("country"),
+                "lat": location.get("lat"),
+                "lon": location.get("lon"),
+                "tz_id": location.get("tz_id"),
+                "localtime": location.get("localtime")
+            },
             "alerts": []
         }
-    
-    try:
-        # Setup the Open-Meteo API client with cache and retry on error
-        cache_session = requests_cache.CachedSession('.cache', expire_after=3600)
-        retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
-        openmeteo = openmeteo_requests.Client(session=retry_session)
-        
-        # Configure the API request
-        url = "https://api.open-meteo.com/v1/forecast"
-        params = {
-            "latitude": lat,
-            "longitude": lng,
-            "hourly": ["temperature_2m", "relative_humidity_2m", "cloud_cover", "soil_temperature_18cm", "wind_speed_10m"],
-            "current": ["wind_speed_10m", "wind_direction_10m", "temperature_2m", "relative_humidity_2m", "precipitation", "cloud_cover", "rain"],
-            "daily": ["temperature_2m_max", "temperature_2m_min", "temperature_2m_mean", "relative_humidity_2m_mean", "wind_speed_10m_max"]
-        }
-        
-        responses = openmeteo.weather_api(url, params=params)
-        
-        # Process first location
-        response = responses[0]
-        
-        # Process current weather data
-        current = response.Current()
-        current_wind_speed = float(current.Variables(0).Value())  # Convert to Python float
-        current_wind_direction = float(current.Variables(1).Value())
-        current_temperature = float(current.Variables(2).Value())
-        current_humidity = float(current.Variables(3).Value())
-        current_precipitation = float(current.Variables(4).Value())
-        current_cloud_cover = float(current.Variables(5).Value())
-        current_rain = float(current.Variables(6).Value())
-        
-        # Determine weather condition based on cloud cover and rain
-        weather_main = "Clear"
-        weather_description = "Clear sky"
-        
-        if current_cloud_cover > 80:
-            weather_main = "Clouds"
-            weather_description = "Overcast"
-        elif current_cloud_cover > 50:
-            weather_main = "Clouds"
-            weather_description = "Cloudy"
-        elif current_cloud_cover > 25:
-            weather_main = "Clouds"
-            weather_description = "Partly cloudy"
-            
-        if current_rain > 0:
-            weather_main = "Rain"
-            if current_rain < 1:
-                weather_description = "Light rain"
-            elif current_rain < 5:
-                weather_description = "Moderate rain"
-            else:
-                weather_description = "Heavy rain"
-        
-        # Format current weather in the expected structure
-        current_weather = {
-            "temp": current_temperature,
-            "humidity": current_humidity,
-            "wind_speed": current_wind_speed,
-            "weather": [{"main": weather_main, "description": weather_description}]
-        }
-        
-        # Process daily data
-        daily = response.Daily()
-        daily_data = []
-        
-        # Get timestamps for each day
-        daily_times = pd.date_range(
-            start=pd.to_datetime(daily.Time(), unit="s", utc=True),
-            end=pd.to_datetime(daily.TimeEnd(), unit="s", utc=True),
-            freq=pd.Timedelta(seconds=daily.Interval()),
-            inclusive="left"
-        )
-        
-        # Convert NumPy arrays to Python lists
-        daily_max_temp = [float(x) for x in daily.Variables(0).ValuesAsNumpy()]
-        daily_min_temp = [float(x) for x in daily.Variables(1).ValuesAsNumpy()]
-        daily_mean_temp = [float(x) for x in daily.Variables(2).ValuesAsNumpy()]
-        daily_humidity = [float(x) for x in daily.Variables(3).ValuesAsNumpy()]
-        daily_wind_speed = [float(x) for x in daily.Variables(4).ValuesAsNumpy()]
-        
-        for i in range(len(daily_times)):
-            # Simple weather estimation based on the temperature difference
-            temp_diff = daily_max_temp[i] - daily_min_temp[i]
-            weather_main = "Sunny"
-            weather_desc = "Clear sky"
-            
-            if temp_diff < 5:  # Small temperature difference often means cloudy
-                weather_main = "Clouds"
-                weather_desc = "Partly cloudy"
-            
-            daily_data.append({
-                "dt": int(daily_times[i].timestamp()),
-                "temp": {
-                    "day": daily_mean_temp[i],
-                    "min": daily_min_temp[i],
-                    "max": daily_max_temp[i]
-                },
-                "humidity": daily_humidity[i],
-                "wind_speed": daily_wind_speed[i],
-                "weather": [{"main": weather_main, "description": weather_desc}]
-            })
-        
-        # Return the weather data in the expected format
-        return {
-            "current": current_weather,
-            "daily": daily_data,
-            "alerts": []  # Open-Meteo doesn't provide alerts in the free version
-        }
-    
-    except Exception as e:
+        # Optionally, you can add forecast if needed (requires forecast API call)
+        return result
+    except ApiException as e:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=f"Failed to fetch weather data: {str(e)}"

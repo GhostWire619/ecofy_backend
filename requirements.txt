@@ -25,4 +25,8 @@ retry-requests>=2.0.0
 google-genai
 librosa>=0.10.1
 soundfile>=0.12.1
-pydub>=0.25.1 
+pydub>=0.25.1
+
+# Weather API dependencies
+git+https://github.com/weatherapicom/python.git#egg=weatherapipython
+ 
