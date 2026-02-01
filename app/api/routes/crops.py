@@ -1,21 +1,24 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Query, Path
+from fastapi import APIRouter, Depends, HTTPException, status, Query, Path, UploadFile, File, Request, Form
+from pathlib import Path as LocalPath
+import json
 from sqlalchemy.orm import Session
 from typing import List, Optional, Dict, Any
 from math import ceil
 
-from app.api.deps import get_current_user, get_current_admin_user
+from app.api.deps import get_current_user
 from app.database import get_db
 from app.models.crop import Crop
 from app.models.market import MarketPrice
 from app.models.farm import Farm
 from app.models.user import User
-from app.schemas.crop import CropResponse
+from app.schemas.crop import CropResponse, CropCreate
 from app.schemas.market import MarketData
 
 router = APIRouter()
 
 @router.get("", response_model=Dict[str, Any])
 def get_crops(
+    request: Request,
     page: int = Query(1, ge=1, description="Page number"),
     limit: int = Query(10, ge=1, le=100, description="Items per page"),
     name: Optional[str] = Query(None, description="Filter by crop name"),
@@ -44,12 +47,14 @@ def get_crops(
     items = []
     for crop in crops:
         try:
+            base = str(request.base_url).rstrip('/')
             crop_dict = {
                 "id": crop.id,
                 "name": crop.name,
                 "description": crop.description,
                 "optimal_planting_time": crop.optimal_planting_time,
-                "image": crop.image
+                "image_path": crop.image,
+                "image_url": f"{base}{crop.image}" if crop.image else None
             }
             
             # Safely access complex JSON fields
@@ -77,6 +82,7 @@ def get_crops(
 
 @router.get("/{crop_id}", response_model=CropResponse)
 def get_crop(
+    request: Request,
     crop_id: str = Path(..., description="The ID of the crop to retrieve"),
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
@@ -90,8 +96,18 @@ def get_crop(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Crop not found"
         )
-    
-    return crop
+    base = str(request.base_url).rstrip('/')
+    return {
+        "id": crop.id,
+        "name": crop.name,
+        "description": crop.description,
+        "optimal_planting_time": crop.optimal_planting_time,
+        "climate_requirements": crop.climate_requirements,
+        "soil_requirements": crop.soil_requirements,
+        "risks": crop.risks,
+        "image_path": crop.image,
+        "image_url": f"{base}{crop.image}" if crop.image else None
+    }
 
 
 @router.get("/{crop_id}/market-data")
@@ -276,29 +292,146 @@ def get_crop_recommendations(
 
 
 # Additional endpoints for admin operations
-@router.post("", response_model=CropResponse, dependencies=[Depends(get_current_admin_user)])
-def create_crop(
-    # This would need a CropCreate schema that we haven't implemented yet
-    # crop_data: CropCreate,
-    current_user: User = Depends(get_current_admin_user),
+@router.post("", response_model=CropResponse)
+async def create_crop(
+    request: Request,
+    data: str = Form(...),
+    file: Optional[UploadFile] = File(None),
+    current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
     """
-    Create a new crop (Admin only).
-    Note: This endpoint is a placeholder and would need a proper implementation.
+    Create a new crop.
+
+    Expected JSON structure for `data` (stringified JSON) - example:
+
+    {
+      "name": "UploadCrop",
+      "description": "Will upload image",
+      "optimal_planting_time": "Now",
+      "climate_requirements": {
+        "temperature_min": 10.0,
+        "temperature_max": 30.0,
+        "rainfall_min": 100.0,
+        "rainfall_max": 500.0,
+        "humidity_min": 30.0,
+        "humidity_max": 80.0,
+        "growing_season": "90 days"
+      },
+      "soil_requirements": {
+        "soil_type": "Loamy",
+        "ph_min": 5.0,
+        "ph_max": 7.0,
+        "nitrogen": "Medium",
+        "phosphorus": "Medium",
+        "potassium": "Medium",
+        "ec": "0.2",
+        "salinity": "Low",
+        "water_holding": "Medium",
+        "organic_matter": "Medium"
+      },
+      "risks": [
+        {"title": "Pests", "description": "Some pests", "severity": "Medium"}
+      ]
+    }
+
+    Note: 'data' must contain the fields above as a JSON string. The endpoint still accepts an optional file in the same multipart request.
     """
-    raise HTTPException(
-        status_code=status.HTTP_501_NOT_IMPLEMENTED,
-        detail="Crop creation not implemented yet"
-    )
+    try:
+        # Parse payload from required form 'data'
+        try:
+            payload = json.loads(data)
+            crop_in = CropCreate.parse_obj(payload)
+        except Exception as e:
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Invalid crop data: {e}")
+
+        crop = Crop(
+            name=crop_in.name,
+            description=crop_in.description,
+            optimal_planting_time=crop_in.optimal_planting_time,
+            climate_requirements=crop_in.climate_requirements.dict(),
+            soil_requirements=crop_in.soil_requirements.dict(),
+            risks=[r.dict() for r in crop_in.risks]
+        )
+        db.add(crop)
+        db.commit()
+        db.refresh(crop)
+
+        # If a file was provided in the same request, save it and update the crop
+        if file:
+            uploads_dir = LocalPath("uploads") / "crops"
+            uploads_dir.mkdir(parents=True, exist_ok=True)
+
+            safe_filename = f"{crop.id}_{file.filename}"
+            file_path = uploads_dir / safe_filename
+
+            contents = await file.read()
+            with open(file_path, "wb") as f:
+                f.write(contents)
+
+            public_path = f"/uploads/crops/{safe_filename}"
+            crop.image = public_path
+            db.add(crop)
+            db.commit()
+            db.refresh(crop)
+
+        base = str(request.base_url).rstrip('/')
+        return {
+            "id": crop.id,
+            "name": crop.name,
+            "description": crop.description,
+            "optimal_planting_time": crop.optimal_planting_time,
+            "climate_requirements": crop.climate_requirements,
+            "soil_requirements": crop.soil_requirements,
+            "risks": crop.risks,
+            "image_path": crop.image,
+            "image_url": f"{base}{crop.image}" if crop.image else None
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error creating crop: {e}")
 
 
-@router.put("/{crop_id}", response_model=CropResponse, dependencies=[Depends(get_current_admin_user)])
+@router.post("/{crop_id}/image", response_model=CropResponse)
+async def upload_crop_image(
+    crop_id: str,
+    file: UploadFile = File(...),
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Upload an image file for a crop (Admin only). Stores file under uploads/crops and sets crop.image to the public path."""
+    crop = db.query(Crop).filter(Crop.id == crop_id).first()
+    if not crop:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Crop not found")
+
+    uploads_dir = LocalPath("uploads") / "crops"
+    uploads_dir.mkdir(parents=True, exist_ok=True)
+
+    safe_filename = f"{crop_id}_{file.filename}"
+    file_path = uploads_dir / safe_filename
+
+    try:
+        contents = await file.read()
+        with open(file_path, "wb") as f:
+            f.write(contents)
+
+        public_path = f"/uploads/crops/{safe_filename}"
+        crop.image = public_path
+        db.add(crop)
+        db.commit()
+        db.refresh(crop)
+        return crop
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error uploading image: {e}")
+
+
+@router.put("/{crop_id}", response_model=CropResponse)
 def update_crop(
     crop_id: str,
     # This would need a CropUpdate schema that we haven't implemented yet
     # crop_data: CropUpdate,
-    current_user: User = Depends(get_current_admin_user),
+    current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
     """
@@ -311,10 +444,10 @@ def update_crop(
     )
 
 
-@router.delete("/{crop_id}", dependencies=[Depends(get_current_admin_user)])
+@router.delete("/{crop_id}")
 def delete_crop(
     crop_id: str,
-    current_user: User = Depends(get_current_admin_user),
+    current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
     """

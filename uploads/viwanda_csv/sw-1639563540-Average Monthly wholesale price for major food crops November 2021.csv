@@ -1,0 +1,155 @@
+Year,Month,Region,District/Market,Crop Name,Min Price,Max Price,Average Price
+2021,November,Arusha,Arusha (Urban),Beans (Maharage),138750,168333,153542
+2021,November,Dodoma,Kibaigwa,Beans (Maharage),185000,212500,198750
+2021,November,Dodoma,Majengo,Beans (Maharage),184167,217083,198958
+2021,November,D'Salaam,Kinondoni (Tandale),Beans (Maharage),200000,240000,220000
+2021,November,D'Salaam,Temeke (Tandika),Beans (Maharage),190000,240000,215000
+2021,November,Iringa,Iringa,Beans (Maharage),150000,158333,154167
+2021,November,Kagera,Bukoba,Beans (Maharage),117083,150000,133542
+2021,November,Katavi,Mpanda,Beans (Maharage),160000,200000,180000
+2021,November,Kigoma,Kigoma,Beans (Maharage),130909,131818,131364
+2021,November,Kilimanjaro,Moshi,Beans (Maharage),161667,200000,180833
+2021,November,Lindi,Lindi,Beans (Maharage),186667,227778,207222
+2021,November,Manyara,Babati,Beans (Maharage),150000,166500,158250
+2021,November,Mara,Musoma,Beans (Maharage),188333,200000,194167
+2021,November,Morogoro,Morogoro,Beans (Maharage),183333,186667,185000
+2021,November,Mtwara,Mtwara,Beans (Maharage),165000,170000,167500
+2021,November,Mwanza,Mwanza,Beans (Maharage),178333,240000,209167
+2021,November,Njombe,Njombe,Beans (Maharage),150000,200000,175000
+2021,November,Rukwa,Sumbawanga,Beans (Maharage),139583,175833,157708
+2021,November,Ruvuma,Songea,Beans (Maharage),151000,161000,156000
+2021,November,Shinyanga,Shinyanga,Beans (Maharage),176667,186667,181667
+2021,November,Tabora,Tabora,Beans (Maharage),161667,191667,176667
+2021,November,Tanga,Tanga,Beans (Maharage),175000,190000,182500
+2021,November,Arusha,Arusha (Urban),Bulrush Millet (Uwele),67917,71167,69542
+2021,November,Dodoma,Majengo,Bulrush Millet (Uwele),45500,50833,48167
+2021,November,D'Salaam,Kinondoni (Tandale),Bulrush Millet (Uwele),70000,70000,70000
+2021,November,D'Salaam,Temeke (Tandika),Bulrush Millet (Uwele),80000,100000,90000
+2021,November,Kagera,Bukoba,Bulrush Millet (Uwele),100000,120000,110000
+2021,November,Kigoma,Kigoma,Bulrush Millet (Uwele),63636,75455,69545
+2021,November,Kilimanjaro,Moshi,Bulrush Millet (Uwele),120000,126667,123333
+2021,November,Lindi,Lindi,Bulrush Millet (Uwele),200000,250000,225000
+2021,November,Manyara,Babati,Bulrush Millet (Uwele),65000,85000,75000
+2021,November,Mara,Musoma,Bulrush Millet (Uwele),180000,200000,190000
+2021,November,Morogoro,Morogoro,Bulrush Millet (Uwele),135000,135000,135000
+2021,November,Mwanza,Mwanza,Bulrush Millet (Uwele),186667,200000,193333
+2021,November,Shinyanga,Shinyanga,Bulrush Millet (Uwele),120000,130000,125000
+2021,November,Tabora,Tabora,Bulrush Millet (Uwele),170000,180000,175000
+2021,November,Tanga,Tanga,Bulrush Millet (Uwele),95000,95000,95000
+2021,November,Arusha,Arusha (Urban),Finger Millet (Ulezi),128750,132000,130375
+2021,November,Dodoma,Majengo,Finger Millet (Ulezi),120375,139417,129896
+2021,November,D'Salaam,Kinondoni (Tandale),Finger Millet (Ulezi),160000,160000,160000
+2021,November,D'Salaam,Temeke (Tandika),Finger Millet (Ulezi),152500,180000,166250
+2021,November,Iringa,Iringa,Finger Millet (Ulezi),148333,148333,148333
+2021,November,Kagera,Bukoba,Finger Millet (Ulezi),160000,180000,170000
+2021,November,Katavi,Mpanda,Finger Millet (Ulezi),180000,200000,190000
+2021,November,Kigoma,Kigoma,Finger Millet (Ulezi),177273,177273,177273
+2021,November,Lindi,Lindi,Finger Millet (Ulezi),168889,200000,184444
+2021,November,Manyara,Babati,Finger Millet (Ulezi),135000,152500,143750
+2021,November,Mara,Musoma,Finger Millet (Ulezi),180000,200000,190000
+2021,November,Morogoro,Morogoro,Finger Millet (Ulezi),168333,170000,169167
+2021,November,Mtwara,Mtwara,Finger Millet (Ulezi),180000,180000,180000
+2021,November,Mwanza,Mwanza,Finger Millet (Ulezi),200000,200000,200000
+2021,November,Njombe,Njombe,Finger Millet (Ulezi),150000,170000,160000
+2021,November,Rukwa,Sumbawanga,Finger Millet (Ulezi),129583,148333,138958
+2021,November,Shinyanga,Shinyanga,Finger Millet (Ulezi),123333,133333,128333
+2021,November,Tabora,Tabora,Finger Millet (Ulezi),170000,180000,175000
+2021,November,Tanga,Tanga,Finger Millet (Ulezi),160000,180000,170000
+2021,November,Arusha,Arusha (Urban),Irish Potatoes (Viazi Mviringo),54333,58333,56333
+2021,November,Dodoma,Majengo,Irish Potatoes (Viazi Mviringo),48167,58167,53167
+2021,November,D'Salaam,Kinondoni (Tandale),Irish Potatoes (Viazi Mviringo),60714,62286,61500
+2021,November,D'Salaam,Temeke (Tandika),Irish Potatoes (Viazi Mviringo),65000,65000,65000
+2021,November,Iringa,Iringa,Irish Potatoes (Viazi Mviringo),45521,46563,46042
+2021,November,Kagera,Bukoba,Irish Potatoes (Viazi Mviringo),52917,61042,56979
+2021,November,Katavi,Mpanda,Irish Potatoes (Viazi Mviringo),50000,65000,57500
+2021,November,Kigoma,Kigoma,Irish Potatoes (Viazi Mviringo),67727,77273,72500
+2021,November,Kilimanjaro,Moshi,Irish Potatoes (Viazi Mviringo),60000,65000,62500
+2021,November,Lindi,Lindi,Irish Potatoes (Viazi Mviringo),100000,108889,104444
+2021,November,Manyara,Babati,Irish Potatoes (Viazi Mviringo),70000,71250,70625
+2021,November,Mara,Musoma,Irish Potatoes (Viazi Mviringo),90000,95000,92500
+2021,November,Morogoro,Morogoro,Irish Potatoes (Viazi Mviringo),79000,80500,79750
+2021,November,Mtwara,Mtwara,Irish Potatoes (Viazi Mviringo),60000,65000,62500
+2021,November,Mwanza,Mwanza,Irish Potatoes (Viazi Mviringo),85000,86667,85833
+2021,November,Njombe,Njombe,Irish Potatoes (Viazi Mviringo),45000,52750,48875
+2021,November,Rukwa,Sumbawanga,Irish Potatoes (Viazi Mviringo),58333,69583,63958
+2021,November,Ruvuma,Songea,Irish Potatoes (Viazi Mviringo),73400,75600,74500
+2021,November,Shinyanga,Shinyanga,Irish Potatoes (Viazi Mviringo),80000,89583,84792
+2021,November,Tabora,Tabora,Irish Potatoes (Viazi Mviringo),62500,72500,67500
+2021,November,Tanga,Tanga,Irish Potatoes (Viazi Mviringo),60833,60833,60833
+2021,November,Arusha,Arusha (Urban),Maize (Mahindi),48333,49750,49042
+2021,November,Dodoma,Kibaigwa,Maize (Mahindi),42417,44083,43250
+2021,November,Dodoma,Majengo,Maize (Mahindi),44417,50333,47375
+2021,November,D'Salaam,Kinondoni (Tandale),Maize (Mahindi),50000,59222,54611
+2021,November,D'Salaam,Temeke (Tandika),Maize (Mahindi),47250,49125,48188
+2021,November,Iringa,Iringa,Maize (Mahindi),33083,33833,33458
+2021,November,Kagera,Bukoba,Maize (Mahindi),60833,65000,62917
+2021,November,Katavi,Mpanda,Maize (Mahindi),35167,44000,39583
+2021,November,Kigoma,Kigoma,Maize (Mahindi),47709,49500,48605
+2021,November,Kilimanjaro,Moshi,Maize (Mahindi),57500,58500,58000
+2021,November,Lindi,Lindi,Maize (Mahindi),70000,100000,85000
+2021,November,Manyara,Babati,Maize (Mahindi),49167,60000,54583
+2021,November,Mara,Musoma,Maize (Mahindi),60000,65000,62500
+2021,November,Morogoro,Morogoro,Maize (Mahindi),46224,46875,46549
+2021,November,Mtwara,Mtwara,Maize (Mahindi),43333,45000,44167
+2021,November,Mwanza,Mwanza,Maize (Mahindi),60667,66750,63708
+2021,November,Njombe,Njombe,Maize (Mahindi),44000,46000,45000
+2021,November,Rukwa,Sumbawanga,Maize (Mahindi),35083,39833,37458
+2021,November,Ruvuma,Songea,Maize (Mahindi),27800,30000,28900
+2021,November,Shinyanga,Shinyanga,Maize (Mahindi),42500,46000,44250
+2021,November,Tabora,Tabora,Maize (Mahindi),43417,44667,44042
+2021,November,Tanga,Tanga,Maize (Mahindi),51465,52237,51851
+2021,November,Arusha,Arusha (Urban),Rice (Mchele),132500,200000,166250
+2021,November,Dodoma,Kibaigwa,Rice (Mchele),150000,150000,150000
+2021,November,Dodoma,Majengo,Rice (Mchele),137333,169583,153458
+2021,November,D'Salaam,Kinondoni (Tandale),Rice (Mchele),127778,200000,163889
+2021,November,D'Salaam,Temeke (Tandika),Rice (Mchele),131250,220000,175625
+2021,November,Iringa,Iringa,Rice (Mchele),120000,200000,160000
+2021,November,Kagera,Bukoba,Rice (Mchele),130333,170000,150167
+2021,November,Katavi,Mpanda,Rice (Mchele),105000,123333,114167
+2021,November,Kigoma,Kigoma,Rice (Mchele),120000,130000,125000
+2021,November,Kilimanjaro,Moshi,Rice (Mchele),151667,216667,184167
+2021,November,Lindi,Lindi,Rice (Mchele),126667,200000,163333
+2021,November,Manyara,Babati,Rice (Mchele),130000,180000,155000
+2021,November,Mara,Musoma,Rice (Mchele),107500,117500,112500
+2021,November,Morogoro,Morogoro,Rice (Mchele),165000,178333,171667
+2021,November,Mtwara,Mtwara,Rice (Mchele),150000,170000,160000
+2021,November,Mwanza,Mwanza,Rice (Mchele),127917,254167,191042
+2021,November,Njombe,Njombe,Rice (Mchele),190000,250000,220000
+2021,November,Rukwa,Sumbawanga,Rice (Mchele),105000,127500,116250
+2021,November,Ruvuma,Songea,Rice (Mchele),150000,200000,175000
+2021,November,Shinyanga,Shinyanga,Rice (Mchele),123333,140000,131667
+2021,November,Tabora,Tabora,Rice (Mchele),100000,115000,107500
+2021,November,Tanga,Tanga,Rice (Mchele),140000,160000,150000
+2021,November,Arusha,Arusha (Urban),Sorghum (Mtama),66750,71250,69000
+2021,November,Dodoma,Kibaigwa,Sorghum (Mtama),41250,45167,43208
+2021,November,Dodoma,Majengo,Sorghum (Mtama),50250,60000,55125
+2021,November,D'Salaam,Kinondoni (Tandale),Sorghum (Mtama),79444,79444,79444
+2021,November,D'Salaam,Temeke (Tandika),Sorghum (Mtama),71250,100000,85625
+2021,November,Iringa,Iringa,Sorghum (Mtama),96667,116667,106667
+2021,November,Kagera,Bukoba,Sorghum (Mtama),83333,120833,102083
+2021,November,Katavi,Mpanda,Sorghum (Mtama),180000,200000,190000
+2021,November,Kigoma,Kigoma,Sorghum (Mtama),77273,94545,85909
+2021,November,Kilimanjaro,Moshi,Sorghum (Mtama),120000,126667,123333
+2021,November,Lindi,Lindi,Sorghum (Mtama),150000,200000,175000
+2021,November,Manyara,Babati,Sorghum (Mtama),60000,80000,70000
+2021,November,Mara,Musoma,Sorghum (Mtama),60000,65000,62500
+2021,November,Morogoro,Morogoro,Sorghum (Mtama),135000,135000,135000
+2021,November,Mtwara,Mtwara,Sorghum (Mtama),73333,73333,73333
+2021,November,Mwanza,Mwanza,Sorghum (Mtama),176667,200000,188333
+2021,November,Shinyanga,Shinyanga,Sorghum (Mtama),120000,130000,125000
+2021,November,Tabora,Tabora,Sorghum (Mtama),140000,150000,145000
+2021,November,Tanga,Tanga,Sorghum (Mtama),82500,92500,87500
+2021,November,Arusha,Arusha (Urban),Wheat (Ngano Punje),80000,83500,81750
+2021,November,D'Salaam,Kinondoni (Tandale),Wheat (Ngano Punje),123333,133333,128333
+2021,November,D'Salaam,Temeke (Tandika),Wheat (Ngano Punje),120000,130000,125000
+2021,November,Iringa,Iringa,Wheat (Ngano Punje),143333,143333,143333
+2021,November,Kagera,Bukoba,Wheat (Ngano Punje),150000,170000,160000
+2021,November,Kigoma,Kigoma,Wheat (Ngano Punje),150000,150000,150000
+2021,November,Kilimanjaro,Moshi,Wheat (Ngano Punje),140000,146667,143333
+2021,November,Lindi,Lindi,Wheat (Ngano Punje),151111,165556,158333
+2021,November,Manyara,Babati,Wheat (Ngano Punje),120000,130000,125000
+2021,November,Morogoro,Morogoro,Wheat (Ngano Punje),160000,160000,160000
+2021,November,Njombe,Njombe,Wheat (Ngano Punje),145000,150000,147500
+2021,November,Rukwa,Sumbawanga,Wheat (Ngano Punje),72917,78750,75833
+2021,November,Shinyanga,Shinyanga,Wheat (Ngano Punje),120000,130000,125000
+2021,November,Tanga,Tanga,Wheat (Ngano Punje),120000,130000,125000

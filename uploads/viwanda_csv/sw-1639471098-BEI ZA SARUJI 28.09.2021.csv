@@ -1,0 +1,123 @@
+Date,Region,District/Council,Cement_Types,Price_Low,Price_High
+2021-09-28,Arusha,Arusha CC,"simba, twiga",16000,17000
+2021-09-28,Arusha,Arusha DC,"kilimanjaro, nyati",16000,18000
+2021-09-28,Arusha,Ngorongoro,"simba, twiga",16000,23000
+2021-09-28,Arusha,Longido DC,,17000,18000
+2021-09-28,Arusha,Monduli DC,,17000,18000
+2021-09-28,Arusha,Meru DC,"twiga,moshi",17000,17800
+2021-09-28,Arusha,Karatu DC,simba,17000,17000
+2021-09-28,"Dar es salaam",Kinondoni MC,"twiga, dangote",15000,15500
+2021-09-28,"Dar es salaam",Ilala MC,,15000,15000
+2021-09-28,"Dar es salaam",Temeke MC,"twiga,dangote",16500,17000
+2021-09-28,"Dar es salaam",Ubungo MC,,15000,15500
+2021-09-28,"Dar es salaam",Kigamboni MC,,14500,15500
+2021-09-28,Dodoma,Bahi DC,,15500,16000
+2021-09-28,Dodoma,Chamwino DC,twiga,18000,16500
+2021-09-28,Dodoma,Chemba DC,"twiga, tangote, simba",17000,18000
+2021-09-28,Dodoma,Dodoma MC,"twiga, camel",16500,18000
+2021-09-28,Dodoma,Kondoa DC,,18000,17500
+2021-09-28,Dodoma,Kondoa TC,twiga,17500,19000
+2021-09-28,Geita,Bukombe DC,dangote,19000,18000
+2021-09-28,Geita,Chato DC,"Dangote, Simba",19500,20000
+2021-09-28,Geita,Geita TC,,19600,20000
+2021-09-28,Geita,Mbogwe DC,,19500,20000
+2021-09-28,Iringa,Iringa MC,,16000,20000
+2021-09-28,Iringa,Iringa DC,,16500,16500
+2021-09-28,Iringa,Kilolo DC,,16000,17000
+2021-09-28,Iringa,Mafinga TC,,15500,18000
+2021-09-28,Iringa,Mufindi DC,,15000,16500
+2021-09-28,Kagera,Bukoba DC,,21000,15000
+2021-09-28,Kagera,Bukoba MC,,20000,23000
+2021-09-28,Katavi,Mpanda MC,"Mbeya, Dangote",19000,22000
+2021-09-28,Katavi,Mlele DC,,20000,21000
+2021-09-28,Katavi,Mpimbwe DC,,20000,20000
+2021-09-28,Katavi,Nsimbo DC,,19500,20500
+2021-09-28,Katavi,Tanganyika,,19500,20500
+2021-09-28,Kigoma,"Kigoma/Ujiji MC",,19000,20500
+2021-09-28,Kigoma,Kigoma DC,,21000,19500
+2021-09-28,Kigoma,Kasulu DC,,22000,22000
+2021-09-28,Kigoma,Kasulu TC,,20500,23000
+2021-09-28,Kigoma,Uvinza DC,,22000,21000
+2021-09-28,Kigoma,Buhigwe DC,,21000,21000
+2021-09-28,Kigoma,Kibondo,,22000,23500
+2021-09-28,Kilimanjaro,Hai DC,,15000,22000
+2021-09-28,Kilimanjaro,Moshi MC,,15000,16000
+2021-09-28,Kilimanjaro,Moshi DC,,14500,17000
+2021-09-28,Kilimanjaro,Mwanga DC,,14500,16000
+2021-09-28,Kilimanjaro,Rombo DC,,16000,15000
+2021-09-28,Lindi,Kilwa DC,,15000,15000
+2021-09-28,Lindi,Lindi DC,,16000,16500
+2021-09-28,Lindi,Lindi MC,,16000,16000
+2021-09-28,Lindi,Liwale DC,,16000,16000
+2021-09-28,Lindi,Nachingwea DC,,16000,16000
+2021-09-28,Lindi,Ruangwa DC,,16000,16500
+2021-09-28,Manyara,Babati DC,,16500,16500
+2021-09-28,Manyara,Babati TC,,16500,17000
+2021-09-28,Manyara,Hanang DC,,16500,17000
+2021-09-28,Manyara,Kiteto DC,,17000,17000
+2021-09-28,Manyara,Mbulu DC,,17000,17000
+2021-09-28,Manyara,Mbulu TC,,17000,17000
+2021-09-28,Manyara,Simanjiro DC,,17000,17000
+2021-09-28,Mara,Bunda DC,,20000,17000
+2021-09-28,Mara,Bunda TC,,19000,22000
+2021-09-28,Mara,Butiama,,22000,21000
+2021-09-28,Mara,Musoma DC,,21000,21500
+2021-09-28,Mara,Musoma MC,,22000,22500
+2021-09-28,Mara,Rorya DC,,22500,22000
+2021-09-28,Mara,Serengeti DC,,21000,22500
+2021-09-28,Mara,Tarime DC,,22000,23000
+2021-09-28,Mara,Tarime TC,,22000,22000
+2021-09-28,Mbeya,Busokela DC,,17000,23000
+2021-09-28,Mbeya,Chunya DC,,20000,17000
+2021-09-28,Morogoro,Gairo DC,,16000,20000
+2021-09-28,Morogoro,Ifakara TC,,14000,
+2021-09-28,Morogoro,Kilombero DC,,16000,
+2021-09-28,Morogoro,Kilosa DC,,15500,
+2021-09-28,Morogoro,Malinyi DC,,16000,
+2021-09-28,Mtwara,Masasi DC,,16000,
+2021-09-28,Mtwara,Masasi TC,,15000,
+2021-09-28,Mtwara,Mtwara DC,,16000,
+2021-09-28,Mtwara,Mwara MC,,16000,
+2021-09-28,Mtwara,Nanyamba DC,,16000,
+2021-09-28,Mtwara,Nanyumbu DC,,16000,
+2021-09-28,Mtwara,Newala DC,,16000,
+2021-09-28,Mtwara,Newala TC,,16000,
+2021-09-28,Mtwara,Tandahimba DC,,16000,
+2021-09-28,Mwanza,Buchosa DC,,20000,
+2021-09-28,Simiyu,Bariadi DC,,19500,
+2021-09-28,Simiyu,Bariadi TC,,19000,
+2021-09-28,Songwe,Ileje DC,,16500,
+2021-09-28,Songwe,Mbozi DC,,16000,
+2021-09-28,Songwe,Momba DC,,17000,
+2021-09-28,Songwe,Songwe DC,,17500,
+2021-09-28,Songwe,Tunduma TC,,16500,
+2021-09-28,Rukwa,Kalambo DC,,20000,
+2021-09-28,Ruvuma,Madaba DC,,15500,
+2021-09-28,Ruvuma,Mbinga DC,,17000,
+2021-09-28,Ruvuma,Mbinga TC,,16000,
+2021-09-28,Ruvuma,Namtumbo DC,,16000,
+2021-09-28,Ruvuma,Nyasa DC,,16000,
+2021-09-28,Ruvuma,Songea DC,,17000,
+2021-09-28,Ruvuma,Songea MC,,16000,
+2021-09-28,Ruvuma,Tunduru DC,,16000,
+2021-09-28,Tabora,Igunga DC,,19000,
+2021-09-28,Tabora,Kaliua DC,,19000,
+2021-09-28,Tabora,Nzega DC,,19000,
+2021-09-28,Tabora,Nzega TC,,19000,
+2021-09-28,Tabora,Sikonge DC,,21000,
+2021-09-28,Tabora,Tabora MC,,18000,
+2021-09-28,Tabora,Urambo DC,,19000,
+2021-09-28,Tabora,Uyui DC,,20000,
+2021-09-28,Tanga,Bumbuli DC,,14000,
+2021-09-28,Tanga,Handeni DC,,
+2021-09-28,Tanga,Handeni TC,,
+2021-09-28,Tanga,Kilindi DC,,
+2021-09-28,Tanga,Korogwe DC,,14000,
+2021-09-28,Tanga,Korogwe TC,,13500,
+2021-09-28,Tanga,Lushoto DC,,
+2021-09-28,Tanga,Mkinga DC,,
+2021-09-28,Tanga,Muheza DC,,
+2021-09-28,Tanga,Pangani DC,,
+2021-09-28,Tanga,Tanga CC,,
+,,,,
+,,,,

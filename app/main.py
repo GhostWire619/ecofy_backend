@@ -5,7 +5,7 @@ import uvicorn
 import logging
 import sys
 
-from app.api.routes import auth, users, farms, crops, market, marketplace, orders, notifications, chat, external
+from app.api.routes import auth, users, farms, crops, market, marketplace, orders, notifications, chat, external, weather
 from app.core.config import settings
 from app.database import engine, Base
 
@@ -30,6 +30,10 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
+# Serve uploaded files under /uploads
+from fastapi.staticfiles import StaticFiles
+app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+
 # Set up CORS
 if settings.BACKEND_CORS_ORIGINS:
     app.add_middleware(
@@ -51,6 +55,7 @@ app.include_router(orders.router, prefix=f"{settings.API_V1_STR}/orders", tags=[
 app.include_router(notifications.router, prefix=f"{settings.API_V1_STR}/notifications", tags=["Notifications"])
 app.include_router(chat.router, prefix=f"{settings.API_V1_STR}/chat", tags=["Chat"])
 app.include_router(external.router, prefix=f"{settings.API_V1_STR}", tags=["External"])
+app.include_router(weather.router, prefix=f"{settings.API_V1_STR}/weather", tags=["Weather"])
 
 @app.get("/", tags=["Root"])
 async def root():

@@ -35,9 +35,13 @@ class CropBase(BaseModel):
     soil_requirements: SoilRequirements
     risks: List[Risk]
 
+class CropCreate(CropBase):
+    pass
+
 class CropResponse(CropBase):
     id: str
-    image: Optional[str] = None
+    image_path: Optional[str] = None
+    image_url: Optional[str] = None
 
     class Config:
         orm_mode = True 

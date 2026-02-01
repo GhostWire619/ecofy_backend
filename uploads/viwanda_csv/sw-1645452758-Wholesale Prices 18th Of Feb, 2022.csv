@@ -1,0 +1,137 @@
+Date,Region,District/Market,Commodity,Min Price,Max Price
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Maize,60000,61000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Maize,60000,100000
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Rice (Mchele),230000,250000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Rice (Mchele),180000,170000
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Sorghum (Mtama),60000,70000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Sorghum (Mtama),110000,120000
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Bulrush Millet (Uwele),65000,70000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Bulrush Millet (Uwele),70000,80000
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Finger Millet (Ulezi),133000,135000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Finger Millet (Ulezi),170000,170000
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Wheat (Ngano Punje),150000,150000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Wheat (Ngano Punje),180000,170000
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Beans (Maharage),200000,240000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Beans (Maharage),160000,200000
+18 FEBRUARI, 2022,Arusha,Arusha (Urban),Irish Potatoes (Viazi Mviringo),100000,100000
+18 FEBRUARI, 2022,D'Salaam,Kinondoni (Tandale),Irish Potatoes (Viazi Mviringo),100000,85000
+18 FEBRUARI, 2022,Dodoma,Majengo,Maize,58000,58000
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Maize,52000,52000
+18 FEBRUARI, 2022,Iringa,Iringa,Maize,50000,55000
+18 FEBRUARI, 2022,Kagera,Bukoba,Maize,58000,65000
+18 FEBRUARI, 2022,Katavi,Mpanda,Maize,62000,66000
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Maize,60000,60000
+18 FEBRUARI, 2022,Lindi,Lindi,Maize,70000,80000
+18 FEBRUARI, 2022,Manyara,Babati,Maize,60000,72000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Maize,55000,66000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Maize,58593,62500
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Maize,62000,62000
+18 FEBRUARI, 2022,Mwanza,Mwanza,Maize,75000,80000
+18 FEBRUARI, 2022,Njombe,Njombe,Maize,60000,60000
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Maize,52000,55000
+18 FEBRUARI, 2022,Tanga,Tanga,Maize,55555,55555
+18 FEBRUARI, 2022,Dodoma,Majengo,Rice (Mchele),200000,175000
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Rice (Mchele),180000,210000
+18 FEBRUARI, 2022,Iringa,Iringa,Rice (Mchele),180000,210000
+18 FEBRUARI, 2022,Kagera,Bukoba,Rice (Mchele),150000,180000
+18 FEBRUARI, 2022,Katavi,Mpanda,Rice (Mchele),150000,150000
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Rice (Mchele),160000,200000
+18 FEBRUARI, 2022,Lindi,Lindi,Rice (Mchele),180000,210000
+18 FEBRUARI, 2022,Manyara,Babati,Rice (Mchele),200000,160000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Rice (Mchele),150000,170000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Rice (Mchele),160000,210000
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Rice (Mchele),180000,200000
+18 FEBRUARI, 2022,Mwanza,Mwanza,Rice (Mchele),160000,250000
+18 FEBRUARI, 2022,Njombe,Njombe,Rice (Mchele),250000,200000
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Rice (Mchele),180000,200000
+18 FEBRUARI, 2022,Tanga,Tanga,Rice (Mchele),160000,180000
+18 FEBRUARI, 2022,Dodoma,Majengo,Sorghum (Mtama),65000,80000
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Sorghum (Mtama),62000,70000
+18 FEBRUARI, 2022,Iringa,Iringa,Sorghum (Mtama),100000,120000
+18 FEBRUARI, 2022,Kagera,Bukoba,Sorghum (Mtama),120000,140000
+18 FEBRUARI, 2022,Katavi,Mpanda,Sorghum (Mtama),180000,200000
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Sorghum (Mtama),120000,120000
+18 FEBRUARI, 2022,Lindi,Lindi,Sorghum (Mtama),150000,200000
+18 FEBRUARI, 2022,Manyara,Babati,Sorghum (Mtama),80000,100000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Sorghum (Mtama),100000,100000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Sorghum (Mtama),150000,NA
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Sorghum (Mtama),NA,NA
+18 FEBRUARI, 2022,Mwanza,Mwanza,Sorghum (Mtama),150000,NA
+18 FEBRUARI, 2022,Njombe,Njombe,Sorghum (Mtama),200000,NA
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Sorghum (Mtama),NA,NA
+18 FEBRUARI, 2022,Tanga,Tanga,Sorghum (Mtama),90000,100000
+18 FEBRUARI, 2022,Dodoma,Majengo,Bulrush Millet (Uwele),65000,68000
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Iringa,Iringa,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Kagera,Bukoba,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Katavi,Mpanda,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Bulrush Millet (Uwele),120000,120000
+18 FEBRUARI, 2022,Lindi,Lindi,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Manyara,Babati,Bulrush Millet (Uwele),80000,100000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Bulrush Millet (Uwele),100000,100000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Bulrush Millet (Uwele),150000,NA
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Mwanza,Mwanza,Bulrush Millet (Uwele),170000,NA
+18 FEBRUARI, 2022,Njombe,Njombe,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Bulrush Millet (Uwele),NA,NA
+18 FEBRUARI, 2022,Tanga,Tanga,Bulrush Millet (Uwele),80000,80000
+18 FEBRUARI, 2022,Dodoma,Majengo,Finger Millet (Ulezi),145000,155000
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Iringa,Iringa,Finger Millet (Ulezi),150000,150000
+18 FEBRUARI, 2022,Kagera,Bukoba,Finger Millet (Ulezi),150000,150000
+18 FEBRUARI, 2022,Katavi,Mpanda,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Lindi,Lindi,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Manyara,Babati,Finger Millet (Ulezi),150000,160000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Finger Millet (Ulezi),150000,150000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Finger Millet (Ulezi),160000,180000
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Mwanza,Mwanza,Finger Millet (Ulezi),180000,NA
+18 FEBRUARI, 2022,Njombe,Njombe,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Tanga,Tanga,Finger Millet (Ulezi),NA,NA
+18 FEBRUARI, 2022,Dodoma,Majengo,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Iringa,Iringa,Wheat (Ngano Punje),150000,150000
+18 FEBRUARI, 2022,Kagera,Bukoba,Wheat (Ngano Punje),140000,150000
+18 FEBRUARI, 2022,Katavi,Mpanda,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Wheat (Ngano Punje),140000,140000
+18 FEBRUARI, 2022,Lindi,Lindi,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Manyara,Babati,Wheat (Ngano Punje),180000,160000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Wheat (Ngano Punje),120000,130000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Wheat (Ngano Punje),190000,180000
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Mwanza,Mwanza,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Njombe,Njombe,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Tanga,Tanga,Wheat (Ngano Punje),NA,NA
+18 FEBRUARI, 2022,Dodoma,Majengo,Beans (Maharage),195000,175000
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Iringa,Iringa,Beans (Maharage),110000,200000
+18 FEBRUARI, 2022,Kagera,Bukoba,Beans (Maharage),110000,180000
+18 FEBRUARI, 2022,Katavi,Mpanda,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Beans (Maharage),170000,200000
+18 FEBRUARI, 2022,Lindi,Lindi,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Manyara,Babati,Beans (Maharage),150000,168000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Beans (Maharage),120000,130000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Beans (Maharage),140000,NA
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Mwanza,Mwanza,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Njombe,Njombe,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Tanga,Tanga,Beans (Maharage),NA,NA
+18 FEBRUARI, 2022,Dodoma,Majengo,Irish Potatoes (Viazi Mviringo),100000,110000
+18 FEBRUARI, 2022,Dodoma,Kibaigwa,Irish Potatoes (Viazi Mviringo),NA,NA
+18 FEBRUARI, 2022,Iringa,Iringa,87500,87500
+18 FEBRUARI, 2022,Kagera,Bukoba,Irish Potatoes (Viazi Mviringo),70000,70000
+18 FEBRUARI, 2022,Katavi,Mpanda,Irish Potatoes (Viazi Mviringo),200000,240000
+18 FEBRUARI, 2022,Kilimanjaro,Moshi,Irish Potatoes (Viazi Mviringo),70000,70000
+18 FEBRUARI, 2022,Lindi,Lindi,Irish Potatoes (Viazi Mviringo),200000,220000
+18 FEBRUARI, 2022,Manyara,Babati,Irish Potatoes (Viazi Mviringo),90000,80000
+18 FEBRUARI, 2022,Kigoma,Kigoma,Irish Potatoes (Viazi Mviringo),100000,100000
+18 FEBRUARI, 2022,Morogoro,Morogoro,Irish Potatoes (Viazi Mviringo),200000,190000
+18 FEBRUARI, 2022,Mtwara,Mtwara Dc,Irish Potatoes (Viazi Mviringo),180000,200000
+18 FEBRUARI, 2022,Mwanza,Mwanza,Irish Potatoes (Viazi Mviringo),180000,250000
+18 FEBRUARI, 2022,Njombe,Njombe,Irish Potatoes (Viazi Mviringo),220000,100000
+18 FEBRUARI, 2022,Rukwa,Sumbawanga,Irish Potatoes (Viazi Mviringo),175000,170000
+18 FEBRUARI, 2022,Tanga,Tanga,Irish Potatoes (Viazi Mviringo),70000,85000

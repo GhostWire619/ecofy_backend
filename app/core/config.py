@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     # External APIs
     WEATHER_API_KEY: Optional[str] = os.getenv("WEATHER_API_KEY")
     SATELLITE_API_KEY: Optional[str] = os.getenv("SATELLITE_API_KEY")
+
+    # Google Gemini configuration
+    GOOGLE_GEMINI_API_KEY: Optional[str] = os.getenv("GOOGLE_GEMINI_API_KEY")
+    GOOGLE_GEMINI_MODEL: str = os.getenv("GOOGLE_GEMINI_MODEL", "gemini-2.5-flash")
     
     # ISDA Africa API credentials
     ISDA_USERNAME: str = os.getenv("ISDA_USERNAME", "lugata619@gmail.com")
